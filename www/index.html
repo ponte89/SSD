@@ -147,7 +147,7 @@
 				if ("WebSocket" in window) 
 				{   	
 					server = document.getElementById("server");//ws://localhost:8100
-					ws = new WebSocket('ws://172.16.115.160:8100');
+					ws = new WebSocket('ws://192.168.1.108:8100');
 					server.innerHTML="Connecting ...";
 					 
 					 ws.onopen = function () 
