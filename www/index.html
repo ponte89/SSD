@@ -24,7 +24,7 @@
   <button onclick="getSolution()"  style="width:200px" id="getSoluzione" disabled="disabled" >Soluzione</button>
 </div>
 <center>
-	<div id="mapView" style="height:300px; width:500px; "></div> <!-- cambiare questo-->
+	<div id="mapView" style="height:300px; width:70%; "></div> <!-- cambiare questo-->
 	<div id="legend" style="background: white;padding: 10px; visibility:hidden">Legend</div>
 </center>
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&libraries=geometry"></script> 
@@ -191,13 +191,21 @@
 			
 			function showMap(punti) {  
 				
+				
+				var alt = window.screen.height;
+				var larg = window.screen.width;
+				
+				if (larg < 200){
+					document.getElementById('MapView').style.width('100px');
+					}
+				
+				
+				
 				var x=document.getElementById("demo");
 				  var myOptions = 
 				  {  zoom: 12,
 					 center: NY,
 					 disableDefaultUI: true,
-					// mapTypeControl: false,
-					 //navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
 					 mapTypeId: google.maps.MapTypeId.ROADMAP
 				  };
 				  map = new google.maps.Map(document.getElementById("mapView"), myOptions);
