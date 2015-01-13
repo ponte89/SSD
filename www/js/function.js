@@ -4,13 +4,8 @@ var connected = false;
 var markersCli = new Array();
 var markersMag = new Array();
 var server;
-
-/*****/
-
-
 var lat = 40.74;
 var long = -73.98;
-var NY = new google.maps.LatLng(40.74, -73.98);
 
 function HomeControl(controlDiv, map) {
 
@@ -43,7 +38,7 @@ function HomeControl(controlDiv, map) {
     google.maps.event.addDomListener(controlUI, 'click', function() {
         lat = 40.74;
         long = -73.98;
-        map.setCenter(NY);
+        map.setCenter(lat,long);
     });
 
 }
@@ -158,31 +153,53 @@ function RightFunction(controlDiv, map) {
     google.maps.event.addDomListener(controlRight, 'click', function() {
         long = long + 0.01;
         map.setCenter(new google.maps.LatLng(lat, long));
-
     });
 }
 
-
-
-/******/
 function showMap(punti) {
     var latlng = new google.maps.LatLng(40.74, -73.98);
-    var x = document.getElementById("demo");
     var myOptions = {
         zoom: 12,
         center: latlng,
-        //mapTypeControl: false,
-        //navigationControlOptions: { style: google.maps.NavigationControlStyle.SMALL },
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         disableDefaultUI: true,
         zoomControl: true,
         zoomControlOptions: {
             style: google.maps.ZoomControlStyle.SMALL
         }
-
     };
-    map = new google.maps.Map(document.getElementById("mapView"), myOptions);
-
+	
+	var ma = document.getElementById("mapView");
+	
+	var width = window.screen.width;
+	var height = window.screen.height;
+	var x,y;
+	if(width>height){
+		/*caso orizzontale*/
+		y = height - (height*50)/100;
+		x = width - (width*70)/100;
+		ma.style.width=x+'px';
+		ma.style.height=y+'px';
+		
+	}else{
+		/*caso verticale*/
+		y = height - (height*70)/100;
+		x = width - (width*50)/100;
+		ma.style.width=x+'px';
+		ma.style.height=y+'px';
+	}
+	
+	var spazio = 5*(width-x);
+	//spazio = spazio + spazio/4;
+	
+	alert('larghezza:'+width+' div:'+x+' spazio:'+spazio);
+	
+	ma.style.marginTop='10px';
+	//ma.style.marginLeft=spazio+'px';
+	ma.style.marginRight=spazio+'px';
+	
+	map = new google.maps.Map(ma, myOptions);
+    
     var ncli = punti[0];
     var nmag = punti[1];
     for (i = 0; i < ncli; i++) {
@@ -195,6 +212,9 @@ function showMap(punti) {
             title: "Cliente " + i
         });
     }
+	
+	
+	
     var start = 2 + ncli * 2;
     for (i = 0; i < nmag; i++) {
         latlng = new google.maps.LatLng(punti[start + 2 * i + 1], punti[start + 2 * i + 0]);
@@ -248,7 +268,9 @@ function showMap(punti) {
     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
     legend.style.visibility = 'visible';
 
-    google.maps.event.addDomListener(window, 'load', initialize);
+
+	
+    //google.maps.event.addDomListener(window, 'load', initialize);
 }
 
 function showLines(punti) {
@@ -287,19 +309,20 @@ function getClients() {
 
     ipser = document.getElementById("ipserver").value;
 
-    if (ipser == "") {
+   /* if (ipser == "") {
         alert("Inserisci ip server!");
-    } else {
-
+    } else {*/
 
         document.getElementById("getSoluzione").disabled = false;
         if ("WebSocket" in window) {
             server = document.getElementById("server");
-            ws = new WebSocket('ws://' + ipser + ':8100');
-            server.innerHTML = "Connecting ...";
+          //  ws = new WebSocket('ws://' + ipser + ':8100');
+            ws = new WebSocket('ws://172.16.115.170:8100');
+            server.innerHTML = "Connessione...";
 
             ws.onopen = function() { // Send data
                 ws.send("0");
+                server.innerHTML = "Connesso";
             };
 
             ws.onmessage = function(evt) {
@@ -319,7 +342,7 @@ function getClients() {
                 server.innerHTML = "Errore";
             };
         }
-    }
+   // }
 }
 
 function getSolution() {
