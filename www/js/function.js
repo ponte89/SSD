@@ -26,7 +26,7 @@ function HomeControl(controlDiv, map) {
     // Set CSS for the control interior
     var controlText = document.createElement('div');
     controlText.style.fontFamily = 'Arial,sans-serif';
-    controlText.style.fontSize = '12px';
+    controlText.style.fontSize = '18px';
     controlText.style.paddingLeft = '8px';
     controlText.style.paddingTop = '5px';
     controlText.style.paddingBottom = '5px';
@@ -56,7 +56,7 @@ function TopFunction(controlDiv, map) {
     // Set CSS for the control interior
     var controlText = document.createElement('div');
     controlText.style.fontFamily = 'Arial,sans-serif';
-    controlText.style.fontSize = '12px';
+    controlText.style.fontSize = '18px';
     controlText.style.paddingLeft = '8px';
     controlText.style.paddingTop = '5px';
     controlText.style.paddingBottom = '5px';
@@ -85,7 +85,7 @@ function BottomFunction(controlDiv, map) {
     // Set CSS for the control interior
     var controlText = document.createElement('div');
     controlText.style.fontFamily = 'Arial,sans-serif';
-    controlText.style.fontSize = '12px';
+    controlText.style.fontSize = '18px';
     controlText.style.paddingLeft = '8px';
     controlText.style.paddingTop = '5px';
     controlText.style.paddingBottom = '5px';
@@ -113,7 +113,7 @@ function LeftFunction(controlDiv, map) {
     // Set CSS for the control interior
     var controlText = document.createElement('div');
     controlText.style.fontFamily = 'Arial,sans-serif';
-    controlText.style.fontSize = '12px';
+    controlText.style.fontSize = '18px';
     controlText.style.paddingLeft = '8px';
     controlText.style.paddingTop = '5px';
     controlText.style.paddingBottom = '5px';
@@ -142,7 +142,7 @@ function RightFunction(controlDiv, map) {
     // Set CSS for the control interior
     var controlText = document.createElement('div');
     controlText.style.fontFamily = 'Arial,sans-serif';
-    controlText.style.fontSize = '12px';
+    controlText.style.fontSize = '18px';
     controlText.style.paddingLeft = '8px';
     controlText.style.paddingTop = '5px';
     controlText.style.paddingBottom = '5px';
@@ -180,8 +180,8 @@ function showMap(punti) {
 		x = x - xp;
 		var yp = (height*40)/100;
 		y = y - yp; 
-		ma.style.width='1000px';
-		ma.style.height='400px';
+		ma.style.width='1300px';
+		ma.style.height='800px';
 		
 	//}else{
 		/*caso verticale*/
@@ -197,7 +197,7 @@ function showMap(punti) {
 	//alert('larghezza:'+width+' div:'+x+' spazio:'+spazio);
 	
 	ma.style.marginTop='10px';
-	ma.style.marginLeft='100px'
+	ma.style.marginLeft='5%';
 	//ma.style.marginRight=spazio+'px';
 	
 	map = new google.maps.Map(ma, myOptions);
