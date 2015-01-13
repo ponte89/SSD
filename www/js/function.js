@@ -174,29 +174,29 @@ function showMap(punti) {
 	var width = window.screen.width;
 	var height = window.screen.height;
 	var x,y;
-	if(width>height){
+	//if(width>height){
 		/*caso orizzontale*/
-		y = height - (height*50)/100;
-		x = width - (width*70)/100;
-		ma.style.width=x+'px';
+		y = height - (height*5)/100;
+		//x = width - (width*10)/100;
+		ma.style.width='auto';
 		ma.style.height=y+'px';
 		
-	}else{
+	//}else{
 		/*caso verticale*/
-		y = height - (height*70)/100;
-		x = width - (width*50)/100;
+		/*y = height - (height*30)/100;
+		x = width - (width*20)/100;
 		ma.style.width=x+'px';
-		ma.style.height=y+'px';
-	}
+		ma.style.height=y+'px';*/
+	//}
 	
-	var spazio = 5*(width-x);
+	//var spazio = 5*(width-x);
 	//spazio = spazio + spazio/4;
 	
-	alert('larghezza:'+width+' div:'+x+' spazio:'+spazio);
+	//alert('larghezza:'+width+' div:'+x+' spazio:'+spazio);
 	
 	ma.style.marginTop='10px';
 	//ma.style.marginLeft=spazio+'px';
-	ma.style.marginRight=spazio+'px';
+	//ma.style.marginRight=spazio+'px';
 	
 	map = new google.maps.Map(ma, myOptions);
     
