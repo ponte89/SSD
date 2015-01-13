@@ -175,12 +175,13 @@ function showMap(punti) {
 	var height = window.screen.height;
 
 	ma.style.width='auto';
-	ma.style.height='800px';
-	
+	//ma.style.height=(height-100)+'px';
+	ma.style.height='1000px';
 	
 	ma.style.marginTop='10px';
 	ma.style.marginLeft='2%';
 	ma.style.marginRight='2%';
+	ma.style.marginBottom="80px";
 	//ma.style.marginRight=spazio+'px';
 	
 	map = new google.maps.Map(ma, myOptions);
