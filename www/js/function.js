@@ -176,10 +176,12 @@ function showMap(punti) {
 	var x,y;
 	//if(width>height){
 		/*caso orizzontale*/
-		y = height - (height*5)/100;
-		//x = width - (width*10)/100;
-		ma.style.width='auto';
-		ma.style.height=y+'px';
+		var xp = (width*20)/100;
+		x = x - xp;
+		var yp = (height*40)/100;
+		y = y - yp; 
+		ma.style.width='1000px';
+		ma.style.height='400px';
 		
 	//}else{
 		/*caso verticale*/
@@ -195,7 +197,7 @@ function showMap(punti) {
 	//alert('larghezza:'+width+' div:'+x+' spazio:'+spazio);
 	
 	ma.style.marginTop='10px';
-	//ma.style.marginLeft=spazio+'px';
+	ma.style.marginLeft='100px'
 	//ma.style.marginRight=spazio+'px';
 	
 	map = new google.maps.Map(ma, myOptions);
@@ -309,15 +311,15 @@ function getClients() {
 
     ipser = document.getElementById("ipserver").value;
 
-    if (ipser == "") {
+   /* if (ipser == "") {
         alert("Inserisci ip server!");
-    } else {
+    } else {*/
 
         document.getElementById("getSoluzione").disabled = false;
         if ("WebSocket" in window) {
             server = document.getElementById("server");
-            ws = new WebSocket('ws://' + ipser + ':8100');
-           // ws = new WebSocket('ws://172.16.115.170:8100');
+           // ws = new WebSocket('ws://' + ipser + ':8100');
+            ws = new WebSocket('ws://172.16.115.170:8100');
             server.innerHTML = "Connessione...";
 
             ws.onopen = function() { // Send data
@@ -342,7 +344,7 @@ function getClients() {
                 server.innerHTML = "Errore";
             };
         }
-    }
+    //}
 }
 
 function getSolution() {
