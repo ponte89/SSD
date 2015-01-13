@@ -180,7 +180,7 @@ function showMap(punti) {
 		x = x - xp;
 		var yp = (height*40)/100;
 		y = y - yp; 
-		ma.style.width='1300px';
+		ma.style.width='auto';
 		ma.style.height='800px';
 		
 	//}else{
@@ -198,6 +198,7 @@ function showMap(punti) {
 	
 	ma.style.marginTop='10px';
 	ma.style.marginLeft='5%';
+	ma.style.marginRight='5%';
 	//ma.style.marginRight=spazio+'px';
 	
 	map = new google.maps.Map(ma, myOptions);
