@@ -38,7 +38,7 @@ function HomeControl(controlDiv, map) {
     google.maps.event.addDomListener(controlUI, 'click', function() {
         lat = 40.74;
         long = -73.98;
-        map.setCenter(lat,long);
+        map.setCenter(new google.maps.LatLng(40.74,-73.98));
     });
 
 }
@@ -173,46 +173,30 @@ function showMap(punti) {
 	
 	var width = window.screen.width;
 	var height = window.screen.height;
-	var x,y;
-	//if(width>height){
-		/*caso orizzontale*/
-		var xp = (width*20)/100;
-		x = x - xp;
-		var yp = (height*40)/100;
-		y = y - yp; 
-		ma.style.width='auto';
-		ma.style.height='800px';
-		
-	//}else{
-		/*caso verticale*/
-		/*y = height - (height*30)/100;
-		x = width - (width*20)/100;
-		ma.style.width=x+'px';
-		ma.style.height=y+'px';*/
-	//}
+
+	ma.style.width='auto';
+	ma.style.height='800px';
 	
-	//var spazio = 5*(width-x);
-	//spazio = spazio + spazio/4;
-	
-	//alert('larghezza:'+width+' div:'+x+' spazio:'+spazio);
 	
 	ma.style.marginTop='10px';
-	ma.style.marginLeft='5%';
-	ma.style.marginRight='5%';
+	ma.style.marginLeft='2%';
+	ma.style.marginRight='2%';
 	//ma.style.marginRight=spazio+'px';
 	
 	map = new google.maps.Map(ma, myOptions);
-    
+			 
+			 
     var ncli = punti[0];
     var nmag = punti[1];
     for (i = 0; i < ncli; i++) {
         latlng = new google.maps.LatLng(punti[2 + 2 * i + 1], punti[2 + 2 * i]);
-        markersCli[i] = new google.maps.Marker({
+         markersCli[i] = new google.maps.Marker({
             position: latlng,
             map: map,
             draggable: false,
             icon: 'http://maps.google.com/mapfiles/kml/pal5/icon14.png',
             title: "Cliente " + i
+			
         });
     }
 	
